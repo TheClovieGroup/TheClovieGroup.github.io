@@ -6,6 +6,19 @@
   --bg: #ffffff;
 }
 
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* stacks on small screens */
+}
+
+.founder-photo {
+  max-width: 200px;   /* adjust size */
+  border-radius: 12px; /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 * { box-sizing: border-box; }
 
 body {
