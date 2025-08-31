@@ -29,6 +29,10 @@
     .wrap a:hover{opacity:1;text-decoration:underline}
     .spacer{margin-left:auto}
 
+    /* NEW: small logo next to Home link */
+    .left{display:flex;align-items:center;gap:.6rem}
+    .logo{height:36px;width:auto;display:block}
+
     /* Main layout */
     main{max-width:960px;margin:2rem auto;padding:0 1rem 3rem}
     .kicker{color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:.85rem}
@@ -56,9 +60,7 @@
     .cta:hover{filter:brightness(.95)}
 
     /* Stat strip */
-    .stats{
-      display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0 1.25rem
-    }
+    .stats{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0 1.25rem}
     .stat{
       flex:1 1 180px;background:var(--card);border:1px solid var(--border);border-radius:12px;
       padding:.9rem 1rem;box-shadow:0 6px 16px rgba(0,0,0,.05)
@@ -94,7 +96,12 @@
 <body>
   <header>
     <div class="wrap">
-      <a href="index.html">← Back to Home</a>
+      <div class="left">
+        <a href="index.html" aria-label="The Clovie Group home">
+          <img src="images/tcg-logo.png" alt="The Clovie Group logo" class="logo">
+        </a>
+        <a href="index.html">← Back to Home</a>
+      </div>
       <div class="spacer"></div>
       <a href="mailto:Mr.InfiniteClovie@gmail.com">Contact</a>
     </div>
