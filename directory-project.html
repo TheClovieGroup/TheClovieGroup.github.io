@@ -3,164 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Clovie Group</title>
+  <title>Request & Help Center Project</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Request & Help Center (Airtable) – The Clovie Group</title>
+  <meta name="description" content="Centralized help directory and request portal built on Airtable. 10+ processes in one hub, 100+ staff hours saved annually." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Request & Help Center using Airtable" />
+  <meta property="og:description" content="10+ processes centralized • 100+ hours saved annually • Fewer email follow-ups" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/directory-crop-hero@2x.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
-    /* ===== Base & Layout ===== */
-    :root { --brand:#0a66c2; --ink:#111; --ink2:#444; --bg:#f8f9fa; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    :root {
+      --bg: #f8f9fa;
+      --ink: #222;
+      --ink-2: #555;
+      --brand: #0a66c2;
+      --card: #fff;
+      --ring: rgba(10,102,194,0.15);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 0;
     * { box-sizing: border-box; }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; line-height:1.6; color:var(--ink); background:var(--bg); }
-
-    header { background:#222; color:#fff; }
-    header .container { max-width: 900px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between; }
-    header h1 { margin:0; font-size:1.8rem; }
-    header nav a { color:#fff; text-decoration:none; margin-left:1rem; }
-    header nav a:hover { text-decoration:underline; }
-
-    .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
-    h2 { border-bottom:2px solid #ddd; padding-bottom:.5rem; margin-top:2rem; }
-
-    /* ===== Hero (Animated) ===== */
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height:1.6; }
+    header { background:#111; color:#fff; }
+    header .wrap { max-width: 960px; margin: 0 auto; padding: .9rem 1rem; display:flex; align-items:center; gap:1rem; }
+    header a { color:#fff; opacity:.9; text-decoration:none; }
+    header a:hover { opacity:1; text-decoration:underline; }
+    main { max-width: 960px; margin: 2rem auto; padding: 0 1rem 3rem; }
+    .kicker { color: var(--ink-2); font-weight:600; text-transform: uppercase; letter-spacing:.04em; font-size:.85rem; }
+    h1 { font-size: clamp(1.8rem, 2.4vw + 1rem, 2.4rem); margin:.25rem 0 0; }
+    .sublead { margin:.5rem 0 1.25rem; color: var(--ink-2); }
     .hero {
-      position: relative; min-height: 68vh; display:grid; place-items:center;
-      overflow:hidden; isolation:isolate; background:#0b1733;
+      background: var(--card);
+      border-radius: 14px; padding: 1rem; margin: 1.25rem 0 1.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      border: 1px solid #eee;
     }
-    .hero-bg {
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;
+    .hero-img {
+      display: block;
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 1.5rem auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .frame {
+      border: 1px solid #e6e6e6; border-radius: 12px; overflow: hidden; background:#fafafa;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,.02);
     }
-    .hero-overlay {
-      position:absolute; inset:0; z-index:-1;
-      background:
-        radial-gradient(80% 120% at 10% 10%, rgba(0,0,0,.35), transparent 60%),
-        linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.15) 45%, rgba(0,0,0,.40));
-      pointer-events:none;
+    .highlight {
+      background: #eaf6ff;
+      border-left: 4px solid #0077cc;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+    .frame .bar { background: #e9e9e9; padding: .4rem .6rem; display:flex; gap:.4rem; }
+    .dot { width:12px; height:12px; border-radius:50%; background:#d75f5f; }
+    .dot:nth-child(2){ background:#d9b048; } .dot:nth-child(3){ background:#6ab56a; }
+    .frame img { display:block; width:100%; height:auto; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .card {
+      background: var(--card); border: 1px solid #eee; border-radius:12px; padding:1rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
     }
-    .hero-content {
-      text-align:left; max-width:900px; width:calc(100% - 2rem);
-      color:#fff; padding:2rem 1rem; margin-inline:auto;
+    .card h3 { margin:.2rem 0 .4rem; }
+    ul { margin:.3rem 0 .2rem .9rem; }
+    .note { font-size:.9rem; color: var(--ink-2); }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
     }
-    .hero-content h1 {
-      font-size: clamp(2rem, 3.5vw + 1rem, 3.2rem);
-      line-height:1.15; margin:0 0 .6rem;
+    .cta a {
+      display: inline-block;
+      background: #0077cc;
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      transition: background 0.2s ease;
     }
-    .hero-content p {
-      font-size: clamp(1rem, 1vw + .6rem, 1.2rem);
-      color:#e9eef6; margin:0 0 1.2rem;
+    .cta a:hover {
+      background: #005fa3;
+      display: inline-block; margin-top: 1rem; background: var(--brand); color:#fff; text-decoration:none;
+      padding:.75rem 1.1rem; border-radius:8px; font-weight:600; box-shadow: 0 6px 16px var(--ring);
     }
-    .btn {
-      display:inline-block; background:var(--brand); color:#fff; text-decoration:none;
-      padding:.8rem 1.1rem; border-radius:10px; font-weight:600;
-      box-shadow:0 8px 20px rgba(10,102,194,.25);
-    }
-    .btn:hover { filter:brightness(.95); }
-    @media (max-width: 720px) { .hero { min-height:60vh; } }
-
-    /* ===== Cards / Sections ===== */
-    .cards { list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    .cards li {
-      background:#fff; padding:1rem; border-radius:8px;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-    }
-    .cards li a { display:block; color:#0077cc; font-weight:bold; text-decoration:none; }
-    .cards li a:hover { text-decoration:underline; }
-
-    .message-box {
-      background:#fff; padding:1rem; border-radius:8px;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
-    }
-
-    footer { text-align:center; padding:1rem; font-size:.9rem; background:#222; color:#fff; margin-top:2rem; }
+    .cta:hover { filter: brightness(.95); }
+    .links { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
+    footer { text-align:center; color: var(--ink-2); padding: 2rem 1rem; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
   </style>
-</head>
 
+  <!-- JSON-LD for richer search snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Request & Help Center using Airtable",
+    "description": "Centralized help directory consolidating 10+ processes; estimated 100+ staff hours saved annually.",
+    "creator": { "@type": "Organization", "name": "The Clovie Group" },
+    "image": "https://thecloviegroup.github.io/images/directory-crop-hero@2x.png"
+  }
+  </script>
+</head>
 <body>
   <header>
-    <div class="container">
-      <h1>The Clovie Group</h1>
-      <nav>
-        <a href="#founder-message">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Free Resources</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <h2>The Clovie Group – Case Study</h2>
+    <div class="wrap">
+      <a href="index.html">← Back to Home</a>
+      <div style="margin-left:auto"><a href="mailto:Mr.InfiniteClovie@gmail.com">Contact</a></div>
     </div>
   </header>
 
-  <!-- ===== Animated Hero (VIDEO) ===== -->
-  <section class="hero">
-    <video class="hero-bg" autoplay muted loop playsinline preload="metadata">
-      <source src="images/hero-abstract.mp4?v=2" type="video/mp4" />
-      <!-- Optional fallback if you ALSO have a GIF: -->
-      <!-- <img src="images/hero-abstract.gif" alt="" /> -->
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Modernize operations. Save time.</h1>
-      <p>We streamline HR, finance, and workflows so your team can focus on impact.</p>
-      <a href="#contact" class="btn">Book a 20-minute consult</a>
+  <div class="container">
+    <h1>Request & Help Center using Airtable</h1>
+    <p><strong>100+ work hours saved:</strong> smarter reimbursements, orders, bookings, and onboarding.</p>
+  <main>
+    <div class="kicker">Case Study</div>
+    <h1>Request &amp; Help Center using Airtable</h1>
+    <p class="sublead"><strong>100+ work hours saved</strong> through smarter reimbursements, orders, bookings, and onboarding.</p>
+
+    <img src="images/directory-crop-hero@2x.png" 
+     alt="Help Directory Screenshot" 
+     class="hero-img" />
+    <section class="hero" aria-label="Project Screenshot">
+      <div class="frame" role="img" aria-label="Help Directory interface preview">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <img src="images/directory-crop-hero@2x.png" alt="Help Directory with cards for meeting spaces, reimbursements, onboarding, and more"
+             loading="lazy" width="1280" />
+      </div>
+      <div class="links">
+        <a class="cta" href="mailto:Mr.InfiniteClovie@gmail.com?subject=Build%20a%20Help%20Center">Book a 20-minute consult</a>
+        <a class="cta" href="index.html">See more projects</a>
+      </div>
+    </section>
+
+    <div class="highlight">
+      <h3>Challenge</h3>
+      <p>The Dean’s Office was using scattered emails and spreadsheets to manage space reservations, finance forms, vacation requests, and onboarding. Staff lost valuable time tracking links and following up on missing information.</p>
     </div>
-  </section>
+    <section class="grid" aria-label="Project details">
+      <article class="card">
+        <h3>Challenge</h3>
+        <p>The Dean’s Office depended on scattered emails and spreadsheets for space reservations, finance forms, vacation requests, and onboarding—causing delays and rework.</p>
+      </article>
 
-  <section id="founder-message" class="container">
-    <h2>A Message from Our Founder</h2>
-    <div class="message-box">
-      <p>
-        At <strong>The Clovie Group</strong>, I believe institutions thrive when their people are supported by simple, effective systems.
-        My journey in higher education and operations has shown me how much time and energy can be lost to outdated processes.
-        That’s why I founded The Clovie Group — to help colleges and universities streamline operations, modernize HR processes,
-        and use data more intelligently.
-      </p>
-      <p>
-        By combining strategy, automation, and AI-driven tools, my goal is to give institutions back their most valuable resource: time.
-        Saving over 100+ work hours in a single project isn’t just efficiency — it’s creating space for educators and staff to focus
-        on what truly matters: empowering students and communities.
-      </p>
-      <p><strong>— Infinite Clovie, Founder</strong></p>
+    <div class="highlight">
+      <h3>Solution</h3>
+      <p>I built a centralized Help Directory using Airtable. Each card links to a live form or resource — making it easy for staff to find what they need and reducing back-and-forth emails.</p>
     </div>
-  </section>
+      <article class="card">
+        <h3>Solution</h3>
+        <p>A centralized Airtable Help Directory with clear categories and standardized forms. Each card links to a live resource, reducing back-and-forth and missing info.</p>
+      </article>
 
-  <section id="services" class="container">
-    <h2>Services</h2>
-    <ul class="cards">
-      <li>
-        <h3>Financial Strategy</h3>
-        <p>Budgeting, forecasting, and investment planning.</p>
-      </li>
-      <li>
-        <h3>Operations Consulting</h3>
-        <p>Process improvement and organizational efficiency.</p>
-      </li>
-      <li>
-        <h3>Technology Solutions</h3>
-        <p>Data analytics, automation, and digital transformation.</p>
-      </li>
-    </ul>
-  </section>
+    <div class="highlight">
+      <h3>Results</h3>
+      <ul>
+        <li>10+ processes centralized into one hub</li>
+        <li>100+ hours saved annually across staff</li>
+        <li>Fewer email follow-ups and faster approvals</li>
+      </ul>
+    </div>
+      <article class="card">
+        <h3>Results</h3>
+        <ul>
+          <li>10+ processes in one hub</li>
+          <li>100+ staff hours saved annually</li>
+          <li>Faster approvals & fewer follow-ups</li>
+        </ul>
+      </article>
 
-  <section id="portfolio" class="container">
-    <h2>Recent Projects</h2>
-    <p>Here are examples of our recent consulting engagements:</p>
-    <ul class="cards">
-      <li>
-        <a href="directory-project.html">
-          Request &amp; Help Center using Airtable – 100+ work hours saved
-        </a>
-      </li>
-      <li>
-        <h3>Tech Firm Expansion Strategy</h3>
-        <p>Guided entry into new markets in Europe and Asia.</p>
-      </li>
-    </ul>
-  </section>
+    <div class="cta">
+      <a href="contact.html">Let’s Build Your Directory</a>
+    </div>
+  </div>
+      <article class="card">
+        <h3>Scope & Stack</h3>
+        <ul>
+          <li>Airtable bases, linked tables, views</li>
+          <li>Form standardization & instructions</li>
+          <li>Light automation & notifications</li>
+        </ul>
+        <p class="note">No personal or student data is shown in this example.</p>
+      </article>
+    </section>
 
-  <section id="contact" class="container">
-    <h2>Contact</h2>
-    <p>Email us at <a href="mailto:Mr.InfiniteClovie@gmail.com">Insert an email here once you get an Outlook with TheClovieGroup Domain</a></p>
-    <p>Or connect on <a href="https://www.linkedin.com/in/infinite-clovie/">LinkedIn</a></p>
-  </section>
+    <p class="note">Client sector: Higher Education · Engagement: Operations & Workflow · Duration: 2–4 weeks</p>
+  </main>
 
   <footer>
-    <p>&copy; 2025 The Clovie Group.</p>
+    &copy; 2025 The Clovie Group
   </footer>
 </body>
 </html>
