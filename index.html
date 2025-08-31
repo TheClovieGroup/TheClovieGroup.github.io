@@ -4,14 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Clovie Group</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== Base & Layout ===== */
+    :root { --brand:#0a66c2; --ink:#111; --ink2:#444; --bg:#f8f9fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; line-height:1.6; color:var(--ink); background:var(--bg); }
+
+    header { background:#222; color:#fff; }
+    header .container { max-width: 900px; margin:0 auto; padding:1rem; display:flex; align-items:center; justify-content:space-between; }
+    header h1 { margin:0; font-size:1.8rem; }
+    header nav a { color:#fff; text-decoration:none; margin-left:1rem; }
+    header nav a:hover { text-decoration:underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    h2 { border-bottom:2px solid #ddd; padding-bottom:.5rem; margin-top:2rem; }
+
+    /* ===== Hero (Animated) ===== */
+    .hero {
+      position: relative; min-height: 68vh; display:grid; place-items:center;
+      overflow:hidden; isolation:isolate; background:#0b1733;
+    }
+    .hero-bg {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;
+    }
+    .hero-overlay {
+      position:absolute; inset:0; z-index:-1;
+      background:
+        radial-gradient(80% 120% at 10% 10%, rgba(0,0,0,.35), transparent 60%),
+        linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.15) 45%, rgba(0,0,0,.40));
+      pointer-events:none;
+    }
+    .hero-content {
+      text-align:left; max-width:900px; width:calc(100% - 2rem);
+      color:#fff; padding:2rem 1rem; margin-inline:auto;
+    }
+    .hero-content h1 {
+      font-size: clamp(2rem, 3.5vw + 1rem, 3.2rem);
+      line-height:1.15; margin:0 0 .6rem;
+    }
+    .hero-content p {
+      font-size: clamp(1rem, 1vw + .6rem, 1.2rem);
+      color:#e9eef6; margin:0 0 1.2rem;
+    }
+    .btn {
+      display:inline-block; background:var(--brand); color:#fff; text-decoration:none;
+      padding:.8rem 1.1rem; border-radius:10px; font-weight:600;
+      box-shadow:0 8px 20px rgba(10,102,194,.25);
+    }
+    .btn:hover { filter:brightness(.95); }
+    @media (max-width: 720px) { .hero { min-height:60vh; } }
+
+    /* ===== Cards / Sections ===== */
+    .cards { list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .cards li {
+      background:#fff; padding:1rem; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+    }
+    .cards li a { display:block; color:#0077cc; font-weight:bold; text-decoration:none; }
+    .cards li a:hover { text-decoration:underline; }
+
+    .message-box {
+      background:#fff; padding:1rem; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+    }
+
+    footer { text-align:center; padding:1rem; font-size:.9rem; background:#222; color:#fff; margin-top:2rem; }
+  </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <h1>The Clovie Group</h1>
       <nav>
-        <a href="#about">About</a>
+        <a href="#founder-message">About</a>
         <a href="#services">Services</a>
         <a href="#portfolio">Free Resources</a>
         <a href="#contact">Contact</a>
@@ -19,11 +86,18 @@
     </div>
   </header>
 
-  <section id="hero">
-    <div class="container">
-      <h2>Your Partner in Modernizing HR and Institutional Operations</h2>
-      <p>Strategy • Finance • Operations • Technology</p>
-      <a href="#contact" class="btn">Work With Us</a>
+  <!-- ===== Animated Hero (VIDEO) ===== -->
+  <section class="hero">
+    <video class="hero-bg" autoplay muted loop playsinline preload="metadata">
+      <source src="images/hero-abstract.mp4?v=2" type="video/mp4" />
+      <!-- Optional fallback if you ALSO have a GIF: -->
+      <!-- <img src="images/hero-abstract.gif" alt="" /> -->
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Modernize operations. Save time.</h1>
+      <p>We streamline HR, finance, and workflows so your team can focus on impact.</p>
+      <a href="#contact" class="btn">Book a 20-minute consult</a>
     </div>
   </section>
 
