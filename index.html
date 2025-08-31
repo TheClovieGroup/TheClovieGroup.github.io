@@ -69,6 +69,35 @@
       box-shadow:0 2px 6px rgba(0,0,0,.05);
     }
 
+    /* ===== Founder block (with circular headshot) ===== */
+    .founder {
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .founder-card {
+      width:140px;
+      height:140px;
+      border-radius:50%;        /* circular wrapper */
+      overflow:hidden;          /* clips the image to the circle */
+      border:1px solid #e5e7eb;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+      background:#fff;
+    }
+    .founder-card img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;        /* circular image */
+    }
+    .founder-text p{ margin:0 0 .9rem; }
+    @media (max-width:640px){
+      .founder{ grid-template-columns: 1fr; }
+      .founder-card{ width:120px; height:120px; }
+    }
+
     footer { text-align:center; padding:1rem; font-size:.9rem; background:#222; color:#fff; margin-top:2rem; }
   </style>
 </head>
@@ -90,8 +119,9 @@
   <section class="hero">
     <video class="hero-bg" autoplay muted loop playsinline preload="metadata">
       <source src="images/hero-abstract.mp4?v=2" type="video/mp4" />
-      <!-- Optional fallback if you ALSO have a GIF: -->
-      <!-- <img src="images/hero-abstract.gif" alt="" /> -->
+      <!-- Optional GIF fallback:
+      <img src="images/hero-abstract.gif" alt="" />
+      -->
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -103,19 +133,26 @@
 
   <section id="founder-message" class="container">
     <h2>A Message from Our Founder</h2>
-    <div class="message-box">
-      <p>
-        At <strong>The Clovie Group</strong>, I believe institutions thrive when their people are supported by simple, effective systems.
-        My journey in higher education and operations has shown me how much time and energy can be lost to outdated processes.
-        That’s why I founded The Clovie Group — to help colleges and universities streamline operations, modernize HR processes,
-        and use data more intelligently.
-      </p>
-      <p>
-        By combining strategy, automation, and AI-driven tools, my goal is to give institutions back their most valuable resource: time.
-        Saving over 100+ work hours in a single project isn’t just efficiency — it’s creating space for educators and staff to focus
-        on what truly matters: empowering students and communities.
-      </p>
-      <p><strong>— Infinite Clovie, Founder</strong></p>
+
+    <div class="message-box founder">
+      <figure class="founder-card">
+        <img src="images/founder-headshot.jpg" alt="Headshot of Infinite Clovie" />
+      </figure>
+
+      <div class="founder-text">
+        <p>
+          At <strong>The Clovie Group</strong>, I believe institutions thrive when their people are supported by simple, effective systems.
+          My journey in higher education and operations has shown me how much time and energy can be lost to outdated processes.
+          That’s why I founded The Clovie Group — to help colleges and universities streamline operations, modernize HR processes,
+          and use data more intelligently.
+        </p>
+        <p>
+          By combining strategy, automation, and AI-driven tools, my goal is to give institutions back their most valuable resource: time.
+          Saving over 100+ work hours in a single project isn’t just efficiency — it’s creating space for educators and staff to focus
+          on what truly matters: empowering students and communities.
+        </p>
+        <p><strong>— Infinite Clovie, Founder</strong></p>
+      </div>
     </div>
   </section>
 
